@@ -12,11 +12,14 @@ class CustomerTest {
 
     @BeforeEach
     void setUp(){
+        Movie m0 = new Movie("movie0", 0);
         Movie m1 = new Movie("movie1", 1);
         Movie m2 = new Movie("movie2", 2);
+        Rental r0 = new Rental(m0, 3);
         Rental r1 = new Rental(m1, 10);
         Rental r2 = new Rental(m2, 5);
         c1 = new Customer("Tweety");
+        c1.addRental(r0);
         c1.addRental(r1);
         c1.addRental(r2);
     }
@@ -30,11 +33,12 @@ class CustomerTest {
     void statement() {
         String statement =
                 "Rental Record for Tweety\n" +
-                "\tTitle\t\tDays\tAmount\n" +
-                "\tmovie1\t\t10\t30.0\n" +
-                "\tmovie2\t\t5\t4.5\n" +
-                "Amount owed is 34.5\n" +
-                "You earned 3 frequent renter points";
+                        "\tTitle\t\tDays\tAmount\n" +
+                        "\tmovie0\t\t3\t3.5\n" +
+                        "\tmovie1\t\t10\t30.0\n" +
+                        "\tmovie2\t\t5\t4.5\n" +
+                        "Amount owed is 38.0\n" +
+                        "You earned 4 frequent renter points";
         assertEquals(statement, c1.statement());
     }
 
@@ -45,12 +49,13 @@ class CustomerTest {
         c1.addRental(r3);
         String statement =
                 "Rental Record for Tweety\n" +
-                "\tTitle\t\tDays\tAmount\n" +
-                "\tmovie1\t\t10\t30.0\n" +
-                "\tmovie2\t\t5\t4.5\n" +
-                "\tDeadpool\t\t6\t6.0\n" +
-                "Amount owed is 40.5\n" +
-                "You earned 4 frequent renter points";
+                        "\tTitle\t\tDays\tAmount\n" +
+                        "\tmovie0\t\t3\t3.5\n" +
+                        "\tmovie1\t\t10\t30.0\n" +
+                        "\tmovie2\t\t5\t4.5\n" +
+                        "\tDeadpool\t\t6\t6.0\n" +
+                        "Amount owed is 44.0\n" +
+                        "You earned 5 frequent renter points";
         assertEquals(statement, c1.statement());
     }
 }
