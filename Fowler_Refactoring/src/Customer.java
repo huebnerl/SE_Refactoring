@@ -34,7 +34,7 @@ class Customer {
         return result;
     }
 
-    public double getTotalPrice(){
+    private double getTotalPrice(){
         double result = 0;
         Enumeration enum_rentals = rentals.elements();
         while (enum_rentals.hasMoreElements()){
