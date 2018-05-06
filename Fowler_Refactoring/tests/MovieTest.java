@@ -25,11 +25,11 @@ class MovieTest {
 
     @Test
     void setPriceCode() {
-        m1.setPriceCode(3);
-        m2.setPriceCode(4);
+        m1.setPriceCode(0);
+        m2.setPriceCode(1);
 
-        assertEquals(3, m1.getPriceCode(), "Price must be 3");
-        assertEquals(4, m2.getPriceCode(), "Price must be 4");
+        assertEquals(0, m1.getPriceCode(), "Price must be 3");
+        assertEquals(1, m2.getPriceCode(), "Price must be 4");
     }
 
     @Test
