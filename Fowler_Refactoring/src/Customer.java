@@ -29,6 +29,23 @@ class Customer {
         //add footer lines
         result += "Amount owed is " + String.valueOf(getTotalPrice()) + "\n";
         result += "You earned " + String.valueOf(getTotalFrequentRenterPoints()) + " frequent renter points";
+
+        return result;
+    }
+
+    public String htmlStatement() {
+        Enumeration enum_rentals = rentals.elements();
+        String result = "<h1> Rental Record for <em>" + this.getName() + "</em></h1><p>" + "\n";
+
+        while (enum_rentals.hasMoreElements()) {
+            Rental each = (Rental) enum_rentals.nextElement();
+            // show figures for the rental
+            result += each.getMovie().getTitle() + ": " + each.getDaysRented() + ", " + String.valueOf(each.getPrice()) + "<br>" + "\n";
+        }
+        //add footer lines
+        result += "</p><p> You owe <em>" + String.valueOf(getTotalPrice()) + "</em></p>" + "\n";
+        result += "<p> You earned <em>" + String.valueOf(getTotalFrequentRenterPoints()) + "</em> frequent renter points </P>" + "\n";
+
         return result;
     }
 
