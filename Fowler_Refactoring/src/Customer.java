@@ -59,6 +59,8 @@ class Customer {
                 if (rental.getDaysRented() > 3)
                     result += (rental.getDaysRented() - 3) * 1.5;
                 break;
+            default:
+                break;
         }
         return result;
     }
